@@ -1,0 +1,141 @@
+.MuiAppBar-root.layoutAppBar {
+  color: black;
+  background-color: white;
+  height: 65px;
+  position: fixed;
+}
+
+.layoutToolBar {
+  height: 65px;
+}
+
+.layoutMenuImage {
+  height: 25px;
+}
+
+.layoutHeaderImageBox {
+  display: flex;
+}
+
+.layoutHeaderImage {
+  margin: 0 8px;
+  height: 65px;
+}
+
+.layoutProfileBox {
+  flex-grow: 1;
+  display: flex;
+  justify-content: end;
+}
+
+.layoutDropdownMenu {
+  margin-top: 45px;
+  margin-left: 10px;
+}
+
+.layoutSidebarRoleBox {
+  height: 42px;
+  padding: 0 12px;
+  display: flex;
+  align-items: center;
+}
+
+.MuiTypography-root.layoutSidebarRoleText {
+  margin-left: 0px;
+  font-size: small;
+  font-weight: bold;
+}
+
+.layoutListItemLink {
+  text-decoration: none;
+  color: white;
+}
+
+.layoutListItemLink .layoutListItemLinkActive {
+  background: #8a3d79 !important;
+  border-left: 3px solid white;
+}
+
+.layoutMobileMain {
+  overflow: hidden;
+}
+
+.MuiListItemIcon-root.layoutListItemIcon {
+  color: white;
+  min-width: 35px;
+}
+
+.layoutDivider {
+  background: white;
+}
+
+.layoutProfileBoxName {
+  margin-left: 8px;
+}
+
+.layoutMobileDropdownMenu {
+  display: none;
+}
+
+.layoutMobileMain {
+  overflow: auto;
+}
+
+@media (max-width: 767px) {
+  .layoutProfileBoxName {
+    display: none;
+  }
+
+  .layoutMobileDropdownMenu {
+    display: block;
+  }
+
+  .layoutMobileMain {
+    margin-left: 0px !important;
+  }
+}
+
+.layoutMobileMain {
+  overflow: hidden;
+}
+
+.MuiTypography-root.layoutProfileName {
+  color: black;
+  display: flex;
+  font-size: 15px;
+}
+
+.layoutProfileArrow {
+  margin-left: 10px;
+}
+
+.MuiTypography-root.layoutProfileRole {
+  font-size: small;
+  margin-right: 80px;
+}
+
+.css-ciy9n4-MuiPaper-root-MuiAppBar-root {
+  max-width: 100%;
+}
+
+.footerMainBox {
+  color: #666;
+  display: flex;
+  justify-content: end;
+  font-size: small;
+  background-color: #fafafa;
+  margin-top: 20px;
+}
+
+@media (max-width: 500px) {
+  .footerMainBox {
+    max-width: 320px;
+    margin: 20px auto 0px;
+  }
+}
+
+@media (max-width: 899px) {
+  .layoutMobileMain {
+    margin-left: 0px !important;
+  }
+}

@@ -1,0 +1,23 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+MS.FE/management-system/node_modules
+MS.FE/management-system/.pnp
+MS.FE/management-system/.pnp.js
+
+# testing
+MS.FE/management-system/coverage
+
+# production
+MS.FE/management-system/build
+
+# misc
+MS.FE/management-system/.DS_Store
+MS.FE/management-system/.env.local
+MS.FE/management-system/.env.development.local
+MS.FE/management-system/.env.test.local
+MS.FE/management-system/.env.production.local
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
