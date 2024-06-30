@@ -49,13 +49,21 @@ namespace management_system.Repository.Reposotories
         {
             return await _dbSet.Where(wherePredicate).ToListAsync();
         }
-        public async Task<TEntity?> GeEntity(Expression<Func<TEntity, bool>> wherePradicate)
+        public async Task<TEntity?> GetEntity(Expression<Func<TEntity, bool>> wherePradicate)
         {
             return await _dbSet.Where(wherePradicate).FirstOrDefaultAsync();
         }
         public async Task<bool> AnyAsync(Expression<Func<TEntity, bool>> wherePradicate)
         {
             return await _dbSet.AnyAsync(wherePradicate);
+        }
+        public async Task SaveChangesAsync()
+        {
+             await _dbContext.SaveChangesAsync();
+        }
+        public async Task<TEntity?> GetById(long id)
+        {
+            return await _dbSet.FindAsync(id);
         }
     }
 }

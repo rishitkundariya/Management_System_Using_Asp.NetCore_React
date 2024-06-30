@@ -19,7 +19,7 @@ namespace management_system.Shared.Utilities
         public object Data { get; set; }
         public HttpStatusCode StatusCode { get; set; }
         public string Message { get; set; }
-        public List<string> ErrorMessages { get; set; }
+        public object ErrorMessages { get; set; }
 
         public override string ToString()
         {

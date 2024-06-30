@@ -16,7 +16,9 @@ namespace management_system.Repository.interfaces
         Task<List<TDto>> selectListAsync<TDto>(Expression<Func<TEntity, TDto>> selectPredicate, Expression<Func<TEntity, bool>> wherePradicate) where TDto : class;
         Task<TDto?> selectFirstAsync<TDto>(Expression<Func<TEntity, TDto>> selectPredicate, Expression<Func<TEntity, bool>> wherePradicate) where TDto : class;
         Task<IEnumerable<TEntity>> GetEntitesListAsync(Expression<Func<TEntity, bool>> wherePredicate );
-        Task<TEntity?> GeEntity(Expression<Func<TEntity, bool>> wherePradicate);
+        Task<TEntity?> GetEntity(Expression<Func<TEntity, bool>> wherePradicate);
         Task<bool> AnyAsync(Expression<Func<TEntity, bool>> wherePradicate);
+        Task SaveChangesAsync();
+        Task<TEntity?> GetById(long id);
     }
 }
