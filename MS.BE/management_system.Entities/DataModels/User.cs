@@ -19,5 +19,9 @@ public partial class User
 
     public long UserTypeId { get; set; }
 
+    public bool IsDeleted { get; set; }
+
+    public TimeOnly CreatedAt { get; set; }
+
     public virtual UserType UserType { get; set; } = null!;
 }

@@ -17,5 +17,9 @@ namespace management_system.Shared.Constants
 
         public const string InvalidCredentials = "Invalid username or password";
         public const string NoRecordsFound = "No records found";
+
+        public const int DefaultPageSize = 10;
+        public const string ASCENDING = "ASC";
+        public const string DESCENDING = "DESC";
     }
 }

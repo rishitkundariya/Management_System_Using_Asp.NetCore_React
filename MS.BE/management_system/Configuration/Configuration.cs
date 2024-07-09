@@ -11,12 +11,11 @@ namespace management_system.Configuration
 
             services.AddDbContext<AppDbContext>(options =>
             options.UseNpgsql(configuration.GetConnectionString("AppDbContext")));
-            services.AddTransient<ExceptionMiddleware>();
         }
         public static void RegisterMiddleware(this IServiceCollection services)
         {
 
-            services.AddTransient<ExceptionMiddleware>();
+            services.AddScoped<ExceptionMiddleware>();
         }
     }
 }

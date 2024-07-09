@@ -1,4 +1,5 @@
-﻿using management_system.Entities.DataModels;
+﻿using management_system.Entities.Dtos;
+using management_system.Entities.DataModels;
 using management_system.Repository.interfaces;
 using Microsoft.EntityFrameworkCore;
 using System;
@@ -7,6 +8,8 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using management_system.Shared.Utilities;
+using management_system.Shared.Constants;
 
 namespace management_system.Repository.Reposotories
 {
@@ -22,8 +25,10 @@ namespace management_system.Repository.Reposotories
         public void Update(TEntity entity)
         {
             _dbSet.Update(entity);
+            _dbContext.SaveChanges();
+
         }
-        public  void Remove(TEntity entity)
+        public void Remove(TEntity entity)
         {
             _dbSet.Remove(entity);
         }
@@ -37,15 +42,36 @@ namespace management_system.Repository.Reposotories
         {
             await _dbSet.Where(predicate).ExecuteDeleteAsync();
         }
-        public async Task<List<TDto>> selectListAsync<TDto>(Expression<Func<TEntity, TDto>> selectPredicate, Expression<Func<TEntity, bool>> wherePradicate) where TDto : class
+        public async Task<object?> selectListAsync(Expression<Func<TEntity, object>> selectPredicate, Expression<Func<TEntity, bool>> wherePradicate, Expression<Func<TEntity, dynamic>> orderByPradicate)
         {
-            return await  _dbSet.Where(wherePradicate).Select(selectPredicate).ToListAsync();
+            var result = _dbSet.AsQueryable();
+            if (wherePradicate != null)
+            {
+                result = result.Where(wherePradicate);
+            }
+            if (orderByPradicate != null)
+            {
+                result = result.OrderBy(orderByPradicate);
+            }
+            return await result.Select(selectPredicate).ToListAsync();
         }
-        public async Task<TDto?> selectFirstAsync<TDto>(Expression<Func<TEntity, TDto>> selectPredicate, Expression<Func<TEntity, bool>> wherePradicate) where TDto : class
+        public async Task<object?> selectFirstAsync(Expression<Func<TEntity, object>> selectPredicate, Expression<Func<TEntity, bool>> wherePradicate)
         {
-            return await _dbSet.Where(wherePradicate).Select(selectPredicate).FirstOrDefaultAsync();
+            if (selectPredicate == null)
+            {
+                return await _dbSet.Where(wherePradicate).FirstOrDefaultAsync();
+            }
+            else if (wherePradicate == null)
+            {
+                return await _dbSet.Select(selectPredicate).FirstOrDefaultAsync();
+            }
+            else
+            {
+                return await _dbSet.Where(wherePradicate).Select(selectPredicate).FirstOrDefaultAsync();
+            }
+
         }
-        public async Task<IEnumerable<TEntity>> GetEntitesListAsync(Expression<Func<TEntity, bool>> wherePredicate )
+        public async Task<IEnumerable<TEntity>> GetEntitesListAsync(Expression<Func<TEntity, bool>> wherePredicate)
         {
             return await _dbSet.Where(wherePredicate).ToListAsync();
         }
@@ -59,11 +85,35 @@ namespace management_system.Repository.Reposotories
         }
         public async Task SaveChangesAsync()
         {
-             await _dbContext.SaveChangesAsync();
+            await _dbContext.SaveChangesAsync();
         }
         public async Task<TEntity?> GetById(long id)
         {
             return await _dbSet.FindAsync(id);
+        }
+
+        public async Task<SearchResponce> GetPaginatedListAsync(Expression<Func<TEntity, object>> selectPredicate, Expression<Func<TEntity, bool>> wherePradicate, Expression<Func<TEntity, dynamic>> orderByPradicate, int pageSize, int pageNo, string sortDir)
+        {
+            var result = _dbSet.AsQueryable();
+            if (wherePradicate != null)
+            {
+                result = result.Where(wherePradicate);
+            }
+            if (orderByPradicate != null)
+            {
+                if (sortDir == SystemConstants.DESCENDING)
+                {
+                    result = result.OrderByDescending(orderByPradicate);
+                }
+                else
+                {
+                    result = result.OrderBy(orderByPradicate);
+                }
+            }
+            return new SearchResponce {
+                TotalCount = await result.CountAsync(),
+                SearchData = await result.Select(selectPredicate).Skip(pageSize * (pageNo - 1)).Take(pageSize).ToListAsync()
+            };
         }
     }
 }

@@ -7,10 +7,14 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
+using management_system.Shared.Exceptions;
+using management_system.Shared.Constants;
+using management_system.Entities.DataModels;
+using management_system.Shared.Utilities;
 
 namespace management_system.Services.Services
 {
-    public class GenericServices<TDto,TEntity> :IGenericServices<TDto,TEntity> where TEntity : class where TDto : class
+    public class GenericServices<TDto,TEntity> :IGenericServices<TDto,TEntity> where TEntity : BaseEntity where TDto : class
     {
         private readonly IGenericRepository<TEntity> _genericRepository;
         private readonly IMapper _mapper;
@@ -19,10 +23,18 @@ namespace management_system.Services.Services
             _genericRepository = genericRepository;
             _mapper = mapper;
         }
-        public void Update(TDto dto)
+        public async Task Update(TDto dto,long Id)
         {
-            TEntity entity = ToEntity(dto);
-            _genericRepository.Update(entity);
+
+            TEntity? entity = await _genericRepository.GetById(Id);
+            if (entity is not null)
+            {
+                entity = ToEntity(dto, entity);
+                entity.UpdatedAt = DateTime.UtcNow;
+                _genericRepository.Update(entity);
+            }
+            else
+                throw new NotFoundException(SystemConstants.NoRecordsFound);
 
         }
         public async Task<bool> Remove(long Id)
@@ -30,29 +42,34 @@ namespace management_system.Services.Services
             TEntity? entity = await _genericRepository.GetById(Id);
             if (entity is not null)
             {
-                _genericRepository.Remove(entity);
+                entity.DeletedAt = DateTime.UtcNow;
+                entity.IsDeleted = true;
+                _genericRepository.Update(entity);
                 return true;
             }
             else
-                return false;
+                throw new NotFoundException(SystemConstants.NoRecordsFound);
         }
         public  async Task<TEntity> AddAsync(TDto dto)
         {
             TEntity entity = ToEntity(dto);
             if (entity != null)
+            {
+                entity.CreatedAt = DateTime.UtcNow;
                 return await _genericRepository.AddAsync(entity);
+            }
             else
-               return null;
+                throw new NullReferenceException();
         }
         public async Task Delete(Expression<Func<TEntity, bool>> predicate)
         {
             await _genericRepository.Delete(predicate);
         }
-        public async Task<List<ResponceModel>> selectListAsync<ResponceModel>(Expression<Func<TEntity, ResponceModel>> selectPredicate, Expression<Func<TEntity, bool>> wherePradicate) where ResponceModel : class
+        public async Task<object?> selectListAsync(Expression<Func<TEntity, object>> selectPredicate, Expression<Func<TEntity, bool>> wherePradicate, Expression<Func<TEntity, dynamic>> orderByPradicate) 
         {
-            return await _genericRepository.selectListAsync(selectPredicate, wherePradicate);
+            return await _genericRepository.selectListAsync(selectPredicate, wherePradicate, orderByPradicate);
         }
-        public async Task<ResponceModel?> selectFirstAsync<ResponceModel>(Expression<Func<TEntity, ResponceModel>> selectPredicate, Expression<Func<TEntity, bool>> wherePradicate) where ResponceModel : class
+        public async Task<object?> selectFirstAsync(Expression<Func<TEntity, object>> selectPredicate, Expression<Func<TEntity, bool>> wherePradicate)
         {
             return await _genericRepository.selectFirstAsync(selectPredicate, wherePradicate);
         }
@@ -78,9 +95,17 @@ namespace management_system.Services.Services
             TEntity entity = _mapper.Map<TDto, TEntity>(Tdto);
             return entity;
         }
+        public TEntity ToEntity(TDto Tdto,TEntity entity)
+        {
+            return  _mapper.Map(Tdto,entity);
+        }
         public async Task SaveChagesAsync()
         {
             await _genericRepository.SaveChangesAsync();
+        }
+        public async Task<SearchResponce> GetPaginatedListAsync(Expression<Func<TEntity, object>> selectPredicate, Expression<Func<TEntity, bool>> wherePradicate, Expression<Func<TEntity, dynamic>> orderByPradicate, int pageSize, int pageNo, string sortDir)
+        {
+           return await _genericRepository.GetPaginatedListAsync(selectPredicate,wherePradicate,orderByPradicate,pageSize,pageNo,sortDir);
         }
     }
 }
