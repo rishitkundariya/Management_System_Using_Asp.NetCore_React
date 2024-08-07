@@ -16,7 +16,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import { mainListItems, secondaryListItems } from "./listItems";
-import { Outlet } from "react-router-dom";
+import { Outlet, useLocation } from "react-router-dom";
 
 function Copyright(props) {
   return (
@@ -83,12 +83,34 @@ const Drawer = styled(MuiDrawer, {
 // TODO remove, this demo shouldn't need to reset the theme.
 const defaultTheme = createTheme();
 
-export default function Layout({ pageTitle }) {
+export default function Layout() {
   const [open, setOpen] = React.useState(true);
   const toggleDrawer = () => {
     setOpen(!open);
   };
+  const { pathname } = useLocation();
 
+  const getPageTitle = () => {
+    switch (pathname) {
+      case "/":
+        return "Dashboard";
+      case "/product":
+        return "Product";
+      case "/invoice":
+        return "Invoice";
+      case "/account":
+        return "Account";
+      case "/user":
+        return "Users";
+      case "/brand":
+        return "Brand";
+        Default: return "Temp";
+    }
+  };
+  const [pageTitle, setPageTitle] = React.useState(getPageTitle());
+  React.useEffect(() => {
+    setPageTitle(getPageTitle());
+  }, [pathname]);
   return (
     <ThemeProvider theme={defaultTheme}>
       <Box sx={{ display: "flex" }}>

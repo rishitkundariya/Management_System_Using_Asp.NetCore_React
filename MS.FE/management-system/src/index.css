@@ -8,6 +8,11 @@
 .layoutToolBar {
   height: 65px;
 }
+/* Base style for the nav-link */
+.active {
+  color: #1976d2 !important; 
+  font-weight: bolder;/* Replace this with your desired active color */
+}
 
 .layoutMenuImage {
   height: 25px;
@@ -138,4 +143,12 @@
   .layoutMobileMain {
     margin-left: 0px !important;
   }
+}
+
+.errorMessage{
+  color: red;
+}
+.rdt_TableHead{
+  font-weight: bolder !important;
+  font-size: 1.1rem !important;
 }

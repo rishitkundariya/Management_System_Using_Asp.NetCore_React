@@ -10,39 +10,119 @@ import BarChartIcon from "@mui/icons-material/BarChart";
 import LayersIcon from "@mui/icons-material/Layers";
 import AssignmentIcon from "@mui/icons-material/Assignment";
 import { Link, NavLink } from "react-router-dom";
+import { BrandingWatermark } from "@mui/icons-material";
 
 export const mainListItems = (
   <React.Fragment>
     <ListItemButton>
-      <ListItemIcon>
-        <DashboardIcon />
-      </ListItemIcon>
-      <ListItemText primary="Dashboard" />
+      <NavLink
+        to={"/"}
+        className={({ isActive }) => (isActive ? "active" : "")}
+        style={{
+          textDecoration: "none",
+          color: "black",
+          padding: "5px",
+          display: "flex",
+          alignItems: "center",
+        }}
+      >
+        <ListItemIcon>
+          <DashboardIcon />
+        </ListItemIcon>
+        Dashboard
+      </NavLink>
     </ListItemButton>
     <ListItemButton>
-      <ListItemIcon>
-        <ShoppingCartIcon />
-      </ListItemIcon>
-
-      <NavLink to={"product"}> Product </NavLink>
+      <NavLink
+        to={"product"}
+        className={({ isActive }) => (isActive ? "active" : "")}
+        style={{
+          textDecoration: "none",
+          color: "black",
+          padding: "5px",
+          display: "flex",
+          alignItems: "center",
+        }}
+      >
+        {" "}
+        <ListItemIcon>
+          <ShoppingCartIcon />
+        </ListItemIcon>{" "}
+        Product{" "}
+      </NavLink>
     </ListItemButton>
     <ListItemButton>
-      <ListItemIcon>
-        <PeopleIcon />
-      </ListItemIcon>
-      <ListItemText primary="Customers" />
+      <NavLink
+        to={"user"}
+        className={({ isActive }) => (isActive ? "active" : "")}
+        style={{
+          textDecoration: "none",
+          color: "black",
+          padding: "5px",
+          display: "flex",
+          alignItems: "center",
+        }}
+      >
+        {" "}
+        <ListItemIcon>
+          <PeopleIcon />
+        </ListItemIcon>
+        Users
+      </NavLink>
     </ListItemButton>
     <ListItemButton>
-      <ListItemIcon>
-        <BarChartIcon />
-      </ListItemIcon>
-      <ListItemText primary="Reports" />
+      <NavLink
+        to={"invoice"}
+        className={({ isActive }) => (isActive ? "active" : "")}
+        style={{
+          textDecoration: "none",
+          color: "black",
+          padding: "5px",
+          display: "flex",
+          alignItems: "center",
+        }}
+      >
+        <ListItemIcon>
+          <BarChartIcon />
+        </ListItemIcon>
+        Invoice
+      </NavLink>
     </ListItemButton>
     <ListItemButton>
-      <ListItemIcon>
-        <LayersIcon />
-      </ListItemIcon>
-      <ListItemText primary="Integrations" />
+      <NavLink
+        to={"account"}
+        className={({ isActive }) => (isActive ? "active" : "")}
+        style={{
+          textDecoration: "none",
+          color: "black",
+          padding: "5px",
+          display: "flex",
+          alignItems: "center",
+        }}
+      >
+        <ListItemIcon>
+          <LayersIcon style={{ color: "inherit" }} />
+        </ListItemIcon>
+        Account
+      </NavLink>
+    </ListItemButton>
+    <ListItemButton>
+      <NavLink
+        to={"brand"}
+        className={({ isActive }) => (isActive ? "active" : "")}
+        style={{
+          textDecoration: "none",
+          color: "black",
+          padding: "5px",
+          display: "flex",
+          alignItems: "center",
+        }}
+      >
+        <ListItemIcon>
+          <BrandingWatermark style={{ color: "inherit" }} />
+        </ListItemIcon>
+        Brand
+      </NavLink>
     </ListItemButton>
   </React.Fragment>
 );
