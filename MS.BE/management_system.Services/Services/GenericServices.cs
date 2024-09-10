@@ -77,9 +77,13 @@ namespace management_system.Services.Services
         {
             return await _genericRepository.GetEntitesListAsync(wherePredicate);
         }
-        public async Task<TEntity?> GeEntity(Expression<Func<TEntity, bool>> wherePradicate)
+        public async Task<TEntity?> GetEntity(Expression<Func<TEntity, bool>> wherePradicate)
         {
             return await _genericRepository.GetEntity(wherePradicate);
+        }
+        public async Task<object?> GetEntity(Expression<Func<TEntity, bool>> wherePradicate,Expression<Func<TEntity, object>> selectPredicate)
+        {
+            return await _genericRepository.GetEntity(wherePradicate,selectPredicate);
         }
         public async Task<bool> AnyAsync(Expression<Func<TEntity, bool>> wherePradicate)
         {

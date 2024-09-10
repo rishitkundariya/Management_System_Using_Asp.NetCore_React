@@ -37,3 +37,4 @@ yarn-error.log*
 /MS.BE/management_system.Shared/bin/Debug/net8.0
 /MS.BE/management_system.Shared/obj
 /MS.FE/management-system/.idea
+MS.FE/management-system/.env

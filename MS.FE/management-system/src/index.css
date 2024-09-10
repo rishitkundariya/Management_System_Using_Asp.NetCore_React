@@ -1,3 +1,8 @@
+.modal-backdrop.show {
+  backdrop-filter: blur(10px); /* Apply the blur effect */
+  background-color: rgba(0, 0, 0, 0.5); /* Optional: darken the backdrop */
+} 
+
 .MuiAppBar-root.layoutAppBar {
   color: black;
   background-color: white;
@@ -151,4 +156,24 @@
 .rdt_TableHead{
   font-weight: bolder !important;
   font-size: 1.1rem !important;
+}
+
+/* Define the container to center the loader */
+.loader-container {
+  position: fixed; /* Position fixed to cover the entire screen */
+  top: 0; /* Align to the top of the screen */
+  left: 0; /* Align to the left of the screen */
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  display: flex; /* Use flexbox to center content */
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  backdrop-filter: blur(5px); /* Blur effect */
+  z-index: 9999; /* Ensure it’s on top of other content */
+}
+
+.loader {
+  /* Styles for the loader itself */
+  color: #4fa94d; /* Loader color */
 }

@@ -1,9 +1,6 @@
 using management_system.Configuration;
-using management_system.Entities.DataModels;
 using management_system.Middleware;
 using management_system.Services.Profiles;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -19,6 +16,16 @@ builder.Services.RegisterRepository();
 builder.Services.RegisterServices();
 builder.Services.RegisterValidator();
 builder.Services.AddAutoMapper(typeof(MappingProfiles));
+builder.Services.AddCors(options =>
+        {
+            options.AddPolicy("AllowSpecificOrigin",
+                builder =>
+                {
+                    builder.WithOrigins("http://localhost:3000")
+                           .AllowAnyMethod()
+                           .AllowAnyHeader();
+                });
+        });
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -28,7 +35,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 app.UseHttpsRedirection();
-
+app.UseCors("AllowSpecificOrigin"); 
 app.UseMiddleware<ExceptionMiddleware>();
 
 app.UseAuthorization();

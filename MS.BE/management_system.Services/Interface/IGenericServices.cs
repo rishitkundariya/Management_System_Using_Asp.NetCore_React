@@ -18,7 +18,8 @@ namespace management_system.Services.Interface
         Task<object?> selectListAsync(Expression<Func<TEntity, object>> selectPredicate, Expression<Func<TEntity, bool>> wherePradicate, Expression<Func<TEntity, dynamic>> orderByPradicate);
         Task<object?> selectFirstAsync(Expression<Func<TEntity, object>> selectPredicate, Expression<Func<TEntity, bool>> wherePradicate);
         Task<IEnumerable<TEntity>> GetEntitesListAsync(Expression<Func<TEntity, bool>> wherePredicate);
-        Task<TEntity?> GeEntity(Expression<Func<TEntity, bool>> wherePradicate);
+        Task<TEntity?> GetEntity(Expression<Func<TEntity, bool>> wherePradicate);
+        Task<object?> GetEntity(Expression<Func<TEntity, bool>> wherePradicate,Expression<Func<TEntity, object>> selectPredicate);
         Task<bool> AnyAsync(Expression<Func<TEntity, bool>> wherePradicate);
         IEnumerable<TEntity> ToEntity(IEnumerable<TDto> dtoList);
         TEntity ToEntity(TDto Tdto);

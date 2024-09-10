@@ -25,9 +25,9 @@ namespace management_system.Services.Services
         {
             Expression<Func<Brand, object>> selectPredicate = x => new
             {
-                x.BrandId,
-                x.Name,
-                x.ShortName
+               id= x.BrandId,
+               name=x.Name,
+               shortname= x.ShortName
             };
             Expression<Func<Brand, dynamic>> orderbyPreadicate = x => x.BrandId;
             Expression<Func<Brand, bool>> whereConditionPredicate = x => x.IsDeleted == false;
@@ -43,11 +43,11 @@ namespace management_system.Services.Services
                     whereConditionPredicate = whereConditionPredicate.Add(x => x.ShortName.ToLower().Contains(searchModel.FilterField_2.ToLower()));
 
                 }
-                if (searchModel.SortBy == "ShortName")
+                if (searchModel.SortBy.ToLower() == "shortname")
                 {
                     orderbyPreadicate = x => x.ShortName;
                 }
-                if (searchModel.SortBy == "Name")
+                if (searchModel.SortBy.ToLower()== "name")
                 {
                     orderbyPreadicate = x => x.Name;
                 }

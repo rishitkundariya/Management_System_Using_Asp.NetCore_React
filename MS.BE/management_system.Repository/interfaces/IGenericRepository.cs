@@ -18,6 +18,7 @@ namespace management_system.Repository.interfaces
         Task<object?> selectFirstAsync(Expression<Func<TEntity, object>> selectPredicate, Expression<Func<TEntity, bool>> wherePradicate);
         Task<IEnumerable<TEntity>> GetEntitesListAsync(Expression<Func<TEntity, bool>> wherePredicate );
         Task<TEntity?> GetEntity(Expression<Func<TEntity, bool>> wherePradicate);
+        Task<object?> GetEntity(Expression<Func<TEntity, bool>> wherePradicate,Expression<Func<TEntity, object>> selectPredicate);
         Task<bool> AnyAsync(Expression<Func<TEntity, bool>> wherePradicate);
         Task SaveChangesAsync();
         Task<TEntity?> GetById(long id);

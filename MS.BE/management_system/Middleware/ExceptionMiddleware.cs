@@ -1,7 +1,5 @@
 ﻿using management_system.Shared.Exceptions;
 using management_system.Shared.Utilities;
-using Microsoft.EntityFrameworkCore;
-using Npgsql;
 
 namespace management_system.Middleware
 {

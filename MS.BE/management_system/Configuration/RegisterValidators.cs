@@ -2,8 +2,6 @@
 using management_system.Entities.Dtos;
 using management_system.Entities.Validator;
 using management_system.Filters;
-using management_system.Repository.Reposotories;
-using management_system.Services.Interface;
 using management_system.Shared.Utilities;
 
 namespace management_system.Configuration

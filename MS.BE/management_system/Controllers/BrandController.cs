@@ -1,8 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using management_system.Filters;
 using FluentValidation;
-using System.ComponentModel.DataAnnotations;
 using management_system.Entities.Dtos;
 using management_system.Services.Interface;
 using management_system.Helpers;
@@ -54,6 +52,12 @@ namespace management_system.Controllers
         {
             return Ok(ResponseHelper.SuccessResponse(await _brandService.Remove(Id), MessageConstants.BRAND_DELETED_MESSAGE));
 
+        }
+        [HttpGet]
+        [IdValidatorFilter]
+        public async Task<IActionResult> GetBrand(long Id)
+        {
+            return Ok(ResponseHelper.SuccessResponse(await _brandService.GetEntity(x=>x.BrandId == Id,x=> new {id=x.BrandId,name = x.Name,shortname = x.ShortName}),MessageConstants.DEFAULT_SUCCESS_MESSAGE));
         }
 
     }

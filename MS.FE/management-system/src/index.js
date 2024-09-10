@@ -1,15 +1,24 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import "./index.css";
-import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { route } from "./Route";
 import { RouterProvider } from "react-router-dom";
+import { ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { Provider } from "react-redux";
+import store from "./store";
+import PageLoader from "./Pages/Loader";
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <RouterProvider router={route}></RouterProvider>
+    <Provider store={store}>
+      <RouterProvider router={route}></RouterProvider>
+      <PageLoader></PageLoader>
+    </Provider>
+    <ToastContainer></ToastContainer>
   </React.StrictMode>
 );
 

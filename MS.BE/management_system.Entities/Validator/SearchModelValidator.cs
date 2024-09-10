@@ -16,7 +16,7 @@ namespace management_system.Entities.Validator
             List<string> shortTyps = new List<string> { SystemConstants.ASCENDING, SystemConstants.DESCENDING };
             RuleFor(x=>x.PageNo).GreaterThanOrEqualTo(1).WithMessage("Page Number must be greater then 1.");
             RuleFor(x => x.PageSize).GreaterThanOrEqualTo(1).WithMessage("Page Size must be greater then 1.");
-            RuleFor(x => x.SortType).Must(x => shortTyps.Contains(x)).WithMessage("Shorting Type is not valid.");
+            RuleFor(x => x.SortType).Must(x => shortTyps.Contains(x.ToUpper())).WithMessage("Shorting Type is not valid.");
         }
     }
 }

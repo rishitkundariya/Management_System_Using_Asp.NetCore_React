@@ -79,6 +79,10 @@ namespace management_system.Repository.Reposotories
         {
             return await _dbSet.Where(wherePradicate).FirstOrDefaultAsync();
         }
+         public async Task<object?> GetEntity(Expression<Func<TEntity, bool>> wherePradicate,Expression<Func<TEntity, object>> selectPredicate)
+        {
+            return await _dbSet.Where(wherePradicate).Select(selectPredicate).FirstOrDefaultAsync();
+        }
         public async Task<bool> AnyAsync(Expression<Func<TEntity, bool>> wherePradicate)
         {
             return await _dbSet.AnyAsync(wherePradicate);
@@ -101,7 +105,7 @@ namespace management_system.Repository.Reposotories
             }
             if (orderByPradicate != null)
             {
-                if (sortDir == SystemConstants.DESCENDING)
+                if (sortDir.ToUpper() == SystemConstants.DESCENDING)
                 {
                     result = result.OrderByDescending(orderByPradicate);
                 }
