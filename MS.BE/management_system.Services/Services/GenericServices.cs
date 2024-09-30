@@ -40,7 +40,7 @@ namespace management_system.Services.Services
         public async Task<bool> Remove(long Id)
         {
             TEntity? entity = await _genericRepository.GetById(Id);
-            if (entity is not null)
+            if (entity is not null && entity.IsDeleted == false)
             {
                 entity.DeletedAt = DateTime.UtcNow;
                 entity.IsDeleted = true;

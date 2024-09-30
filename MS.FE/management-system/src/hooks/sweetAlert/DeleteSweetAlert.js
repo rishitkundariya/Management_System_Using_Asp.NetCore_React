@@ -15,17 +15,12 @@ const ShowSweetAlert = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         deleteData(id);
-        Swal.fire({
-          title: "Deleted!",
-          text: "Your file has been deleted with" + id + ".",
-          icon: "success",
-        });
       }
     });
   };
-  return{
-    showDeleteSweetAlert
-  }
+  return {
+    showDeleteSweetAlert,
+  };
 };
 
 export default ShowSweetAlert;

@@ -26,7 +26,7 @@ namespace management_system.Controllers
         public async Task<IActionResult> AddBrand(BrandDto dto)
         {
             var result = await _brandService.AddAsync(dto);
-            return Ok(ResponseHelper.CreateResponse(result,MessageConstants.BRAND_CREATED_MESSAGE));
+            return Ok(ResponseHelper.CreateResponse(null,MessageConstants.BRAND_CREATED_MESSAGE));
 
         }
         [HttpPost]

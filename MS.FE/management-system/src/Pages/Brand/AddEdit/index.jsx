@@ -1,25 +1,40 @@
-import {
-  Button,
-  Card,
-  CardActions,
-  CardContent,
-  CardHeader,
-  Grid,
-  TextField, 
-} from "@mui/material";
+import { Button, Grid, TextField } from "@mui/material";
 import React from "react";
 import { useForm } from "react-hook-form";
 import useBrandService from "../../../hooks/brand/BrandServices";
+import { useSearchParams } from "react-router-dom";
 
-function BrandAddEdit({DefaultData,isEdit=false,setShowModal}) {
-  const { register, handleSubmit, formState } = useForm({defaultValues:{...DefaultData}});
+function BrandAddEdit({
+  DefaultData,
+  isEdit = false,
+  setShowModal,
+  dataGridRef,
+}) {
+  console.log(isEdit);
+  const { register, handleSubmit, formState } = useForm({
+    defaultValues: { ...DefaultData },
+  });
   const { errors } = formState;
- const {addBrand} = useBrandService();
+  const { addBrand, updateBrand } = useBrandService();
+  const [searchParams, setSearchParams] = useSearchParams();
   const submitForm = async (data) => {
-    await addBrand(data.name, data.shortname);
+    if (isEdit) {
+      await updateBrand(data.id, data.name, data.shortname);
+      dataGridRef.current.UpdateRow(data.id, {
+        id: data.id,
+        name: data.name,
+        shortname: data.shortname,
+      });
+    } else {
+      await addBrand(data.name, data.shortname);
+      dataGridRef.current.InsertRow();
+      if (searchParams.has("pageNumber")) {
+        searchParams.set("pageNumber", 1);
+        setSearchParams(searchParams);
+      }
+    }
     setShowModal(false);
   };
-
   return (
     <>
       <Grid container justify="center" spacing={1}>
@@ -68,14 +83,20 @@ function BrandAddEdit({DefaultData,isEdit=false,setShowModal}) {
                 </span>
               </Grid>
 
-              <Grid item xs={12} sm={12} md={12} sx={{ display: 'flex', justifyContent: 'center' }} >
+              <Grid
+                item
+                xs={12}
+                sm={12}
+                md={12}
+                sx={{ display: "flex", justifyContent: "center" }}
+              >
                 <Button
                   sx={{ mx: "auto" }}
                   variant="contained"
                   color="primary"
-                  type="submit" 
+                  type="submit"
                 >
-                  {isEdit ? "Edit":"Add"}
+                  {isEdit ? "Edit" : "Add"}
                 </Button>
               </Grid>
             </Grid>
