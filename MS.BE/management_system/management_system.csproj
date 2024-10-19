@@ -1,10 +1,29 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>net8.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
+
+  <ItemGroup>
+    <Compile Remove="management_system.Entities\**" />
+    <Compile Remove="management_system.Repository\**" />
+    <Compile Remove="management_system.Services\**" />
+    <Compile Remove="management_system.Shared\**" />
+    <Content Remove="management_system.Entities\**" />
+    <Content Remove="management_system.Repository\**" />
+    <Content Remove="management_system.Services\**" />
+    <Content Remove="management_system.Shared\**" />
+    <EmbeddedResource Remove="management_system.Entities\**" />
+    <EmbeddedResource Remove="management_system.Repository\**" />
+    <EmbeddedResource Remove="management_system.Services\**" />
+    <EmbeddedResource Remove="management_system.Shared\**" />
+    <None Remove="management_system.Entities\**" />
+    <None Remove="management_system.Repository\**" />
+    <None Remove="management_system.Services\**" />
+    <None Remove="management_system.Shared\**" />
+  </ItemGroup>
 
   <ItemGroup>
     <PackageReference Include="FluentValidation.AspNetCore" Version="11.3.0" />
@@ -15,12 +34,12 @@
     </PackageReference>
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.4.0" />
   </ItemGroup>
+	<ItemGroup>
+		<ProjectReference Include=".\management_system.Entities\management_system.Entities.csproj" />
+		<ProjectReference Include=".\management_system.Repository\management_system.Repository.csproj" />
+		<ProjectReference Include=".\management_system.Services\management_system.Services.csproj" />
+		<ProjectReference Include=".\management_system.Shared\management_system.Shared.csproj" />
+	</ItemGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\management_system.Entities\management_system.Entities.csproj" />
-    <ProjectReference Include="..\management_system.Repository\management_system.Repository.csproj" />
-    <ProjectReference Include="..\management_system.Services\management_system.Services.csproj" />
-    <ProjectReference Include="..\management_system.Shared\management_system.Shared.csproj" />
-  </ItemGroup>
 
 </Project>
