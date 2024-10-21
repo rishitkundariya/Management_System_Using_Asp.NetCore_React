@@ -1,0 +1,16 @@
+D:\Management System\Management_System_Using_Asp.NetCore_React\MS.BE\management_system.Entities\bin\Debug\net8.0\management_system.Entities.deps.json
+d:\Management System\Management_System_Using_Asp.NetCore_React\MS.BE\management_system.Entities\bin\Debug\net8.0\management_system.Entities.dll
+d:\Management System\Management_System_Using_Asp.NetCore_React\MS.BE\management_system.Entities\bin\Debug\net8.0\management_system.Entities.pdb
+d:\Management System\Management_System_Using_Asp.NetCore_React\MS.BE\management_system.Entities\bin\Debug\net8.0\management_system.Shared.dll
+d:\Management System\Management_System_Using_Asp.NetCore_React\MS.BE\management_system.Entities\bin\Debug\net8.0\management_system.Shared.pdb
+d:\Management System\Management_System_Using_Asp.NetCore_React\MS.BE\management_system.Entities\obj\Debug\net8.0\management_system.Entities.csproj.AssemblyReference.cache
+d:\Management System\Management_System_Using_Asp.NetCore_React\MS.BE\management_system.Entities\obj\Debug\net8.0\management_system.Entities.GeneratedMSBuildEditorConfig.editorconfig
+d:\Management System\Management_System_Using_Asp.NetCore_React\MS.BE\management_system.Entities\obj\Debug\net8.0\management_system.Entities.AssemblyInfoInputs.cache
+d:\Management System\Management_System_Using_Asp.NetCore_React\MS.BE\management_system.Entities\obj\Debug\net8.0\management_system.Entities.AssemblyInfo.cs
+d:\Management System\Management_System_Using_Asp.NetCore_React\MS.BE\management_system.Entities\obj\Debug\net8.0\management_system.Entities.csproj.CoreCompileInputs.cache
+d:\Management System\Management_System_Using_Asp.NetCore_React\MS.BE\management_system.Entities\obj\Debug\net8.0\management_system.Entities.sourcelink.json
+D:\Management System\Management_System_Using_Asp.NetCore_React\MS.BE\management_system.Entities\obj\Debug\net8.0\manageme.8A3192AD.Up2Date
+d:\Management System\Management_System_Using_Asp.NetCore_React\MS.BE\management_system.Entities\obj\Debug\net8.0\management_system.Entities.dll
+d:\Management System\Management_System_Using_Asp.NetCore_React\MS.BE\management_system.Entities\obj\Debug\net8.0\refint\management_system.Entities.dll
+d:\Management System\Management_System_Using_Asp.NetCore_React\MS.BE\management_system.Entities\obj\Debug\net8.0\management_system.Entities.pdb
+D:\Management System\Management_System_Using_Asp.NetCore_React\MS.BE\management_system.Entities\obj\Debug\net8.0\ref\management_system.Entities.dll

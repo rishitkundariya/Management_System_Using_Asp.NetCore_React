@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "72KL7wlexLE=",
+  "success": true,
+  "projectFilePath": "D:\\Management System\\Management_System_Using_Asp.NetCore_React\\MS.BE\\management_system.Entities\\management_system.Entities.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\LPI167.PCLPI167\\.nuget\\packages\\fluentvalidation\\11.9.2\\fluentvalidation.11.9.2.nupkg.sha512",
+    "C:\\Users\\LPI167.PCLPI167\\.nuget\\packages\\fluentvalidation.aspnetcore\\11.3.0\\fluentvalidation.aspnetcore.11.3.0.nupkg.sha512",
+    "C:\\Users\\LPI167.PCLPI167\\.nuget\\packages\\fluentvalidation.dependencyinjectionextensions\\11.9.2\\fluentvalidation.dependencyinjectionextensions.11.9.2.nupkg.sha512",
+    "C:\\Users\\LPI167.PCLPI167\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\2.1.0\\microsoft.extensions.dependencyinjection.abstractions.2.1.0.nupkg.sha512"
+  ],
+  "logs": []
+}

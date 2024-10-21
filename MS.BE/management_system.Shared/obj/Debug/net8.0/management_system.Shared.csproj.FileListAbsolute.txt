@@ -1,0 +1,12 @@
+d:\Management System\Management_System_Using_Asp.NetCore_React\MS.BE\management_system.Shared\bin\Debug\net8.0\management_system.Shared.deps.json
+d:\Management System\Management_System_Using_Asp.NetCore_React\MS.BE\management_system.Shared\bin\Debug\net8.0\management_system.Shared.dll
+d:\Management System\Management_System_Using_Asp.NetCore_React\MS.BE\management_system.Shared\bin\Debug\net8.0\management_system.Shared.pdb
+d:\Management System\Management_System_Using_Asp.NetCore_React\MS.BE\management_system.Shared\obj\Debug\net8.0\management_system.Shared.GeneratedMSBuildEditorConfig.editorconfig
+d:\Management System\Management_System_Using_Asp.NetCore_React\MS.BE\management_system.Shared\obj\Debug\net8.0\management_system.Shared.AssemblyInfoInputs.cache
+d:\Management System\Management_System_Using_Asp.NetCore_React\MS.BE\management_system.Shared\obj\Debug\net8.0\management_system.Shared.AssemblyInfo.cs
+d:\Management System\Management_System_Using_Asp.NetCore_React\MS.BE\management_system.Shared\obj\Debug\net8.0\management_system.Shared.csproj.CoreCompileInputs.cache
+d:\Management System\Management_System_Using_Asp.NetCore_React\MS.BE\management_system.Shared\obj\Debug\net8.0\management_system.Shared.sourcelink.json
+d:\Management System\Management_System_Using_Asp.NetCore_React\MS.BE\management_system.Shared\obj\Debug\net8.0\management_system.Shared.dll
+d:\Management System\Management_System_Using_Asp.NetCore_React\MS.BE\management_system.Shared\obj\Debug\net8.0\refint\management_system.Shared.dll
+d:\Management System\Management_System_Using_Asp.NetCore_React\MS.BE\management_system.Shared\obj\Debug\net8.0\management_system.Shared.pdb
+d:\Management System\Management_System_Using_Asp.NetCore_React\MS.BE\management_system.Shared\obj\Debug\net8.0\ref\management_system.Shared.dll
